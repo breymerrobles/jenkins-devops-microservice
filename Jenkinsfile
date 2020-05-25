@@ -88,10 +88,12 @@ pipeline{
 		stage('Push Docker Image') {
 			steps{
 				echo "Push Docker Image"
-				docker.withRegistry("https://hub.docker.com",'dockerhub'){
-					dockerImage.push();
-			    	dockerImage.push('latest');
-				}
+			    script{
+				 	docker.withRegistry("https://hub.docker.com",'dockerhub'){
+				 		dockerImage.push();
+			    		dockerImage.push('latest');
+					}
+			  }
 			}
 		}
 	} 
