@@ -89,7 +89,7 @@ pipeline{
 			steps{
 				echo "Push Docker Image"
 			    script{
-				 	docker.withRegistry('','dockerhub'){
+				 	docker.withRegistry('https://hub.docker.com','dockerhub'){
 				 		dockerImage.push();
 			    		dockerImage.push('latest');
 					}
