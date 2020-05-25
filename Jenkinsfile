@@ -78,7 +78,7 @@ pipeline{
 		stage('Build Docker Image') {
 			steps{
 				echo "Build Docker Image"
-				"docker build -t breymer/currency-exchange-devops:$env.BUILD_TAG"
+				//"docker build -t breymer/currency-exchange-devops:$env.BUILD_TAG"
 				script{
                    dockerImage = docker.build(" breymer/currency-exchange-devops:${env.BUILD_TAG}")
 				}
