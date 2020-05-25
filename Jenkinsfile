@@ -80,7 +80,7 @@ pipeline{
 				echo "Build Docker Image"
 				//"docker build -t breymer/currency-exchange-devops:$env.BUILD_TAG"
 				script{
-                   dockerImage = docker.build(" breymer/currency-exchange-devops:${env.BUILD_TAG}")
+                  def  dockerImage = docker.build(" breymer/currency-exchange-devops:${env.BUILD_TAG}")
 				}
 			
 			}
@@ -88,7 +88,7 @@ pipeline{
 		stage('Push Docker Image') {
 			steps{
 				echo "Push Docker Image"
-				docker.withRegistry('','dockerhub'){
+				docker.withRegistry('https://hub.docker.com','dockerhub'){
 					dockerImage.push();
 			    	dockerImage.push('latest');
 				}
